@@ -310,7 +310,7 @@ Hal* Hal::GetSingleton() {
 
 ::util::Status Hal::RegisterSignalHandlers() {
   // Register the signal handlers and save the old handlers as well.
-  std::vector<int> sig = {SIGINT, SIGTERM, SIGUSR2};
+  std::vector<int> sig = {SIGINT, SIGTERM, SIGQUIT};
   for (const int s : sig) {
     sighandler_t h = signal(s, SignalRcvCallback);
     if (h == SIG_ERR) {
